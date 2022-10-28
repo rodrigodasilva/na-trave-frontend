@@ -49,18 +49,4 @@ export const MatchBody = styled.section`
   }
 `;
 
-export const MatchTeam = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  .flag {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    border-radius: var(--rounded-md);
-    background: var(--gray-200);
-  }
-`;
-
 export const MatchFooter = styled.footer``;

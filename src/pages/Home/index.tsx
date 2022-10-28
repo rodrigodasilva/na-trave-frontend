@@ -1,5 +1,6 @@
 import { CaretLeft, CaretRight, X } from "phosphor-react";
 
+import TeamCard from "@/components/TeamCard";
 import Typography from "@/components/Typography";
 import DefaultLayout from "@/layouts/Default";
 
@@ -75,19 +76,9 @@ const Home: React.FC = () => {
               </Typography>
             </S.MatchHeader>
             <S.MatchBody>
-              <S.MatchTeam>
-                <Typography size="md" color="gray-600">
-                  {match.homeTeam.abbr}
-                </Typography>
-                <span className="flag" />
-              </S.MatchTeam>
+              <TeamCard team={match.homeTeam} type="home" />
               <X size={24} />
-              <S.MatchTeam>
-                <span className="flag" />
-                <Typography size="md" color="gray-600">
-                  {match.awayTeam.abbr}
-                </Typography>
-              </S.MatchTeam>
+              <TeamCard team={match.awayTeam} type="away" />
             </S.MatchBody>
             <S.MatchFooter>
               <Typography size="md" color="primary" weight="normal">
