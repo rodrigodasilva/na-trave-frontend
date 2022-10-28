@@ -15,7 +15,7 @@ export const HeaderWrapper = styled.header`
 
 export const HeaderContent = styled.div`
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--max-width);
   margin: 0 auto;
 
   img {

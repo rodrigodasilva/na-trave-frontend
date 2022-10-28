@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled from "styled-components";
 
 export const TypographyWrapper = styled.div.attrs<{ as: string }>(props => ({
@@ -68,7 +69,11 @@ export const TypographyWrapper = styled.div.attrs<{ as: string }>(props => ({
     line-height: 1;
   }
 
-  &.font-bold {
-    font-weight: 700;
-  }
+  
+  &.font-light	{ font-weight: 300; }
+  &.font-normal	{ font-weight: 400; }
+  &.font-medium	{ font-weight: 500; }
+  &.font-semibold	{ font-weight: 600; }
+  &.font-bold	{ font-weight: 700; }
+  &.font-extrabold	{ font-weight: 800; }
 `;

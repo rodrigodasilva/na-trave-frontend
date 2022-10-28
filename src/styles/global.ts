@@ -72,6 +72,7 @@ const GlobalStyles = createGlobalStyle`
     ${radii}
 
     --shadow: 0px 2px 12px rgba(96, 123, 153, 0.15);
+    --max-width: 700px;
   }
 
   .my-40 { margin: 40px 0; }

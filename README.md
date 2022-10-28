@@ -1,4 +1,4 @@
-# Blip challenge
+# NaTrave Frontend
 
 ## What's inside?
 

@@ -1,3 +1,4 @@
+import cc from "classnames";
 import React from "react";
 
 import * as S from "./styles";
@@ -17,6 +18,14 @@ type Sizes =
   | "8xl"
   | "9xl";
 
+type FontWeight =
+  | "light"
+  | "normal"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold";
+
 interface TypographyProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "center" | "inherit" | "justify" | "left" | "right";
   as?: React.ElementType;
@@ -26,17 +35,19 @@ interface TypographyProps extends React.HTMLAttributes<HTMLDivElement> {
   noWrap?: boolean;
   style?: React.CSSProperties;
   size?: Sizes;
+  weight?: FontWeight;
 }
 
 const Typography: React.FC<TypographyProps> = ({
   align = "left",
   as: asProp = "h2",
-  color = "text-gray-600",
+  color = "gray-600",
   className = "",
   children,
   noWrap = false,
   style = {},
   size = "sm",
+  weight = "medium",
   ...props
 }) => {
   const asComponent = asProp;
@@ -60,7 +71,7 @@ const Typography: React.FC<TypographyProps> = ({
   return (
     <S.TypographyWrapper
       as={asComponent}
-      className={`text-${size} ${className}`}
+      className={cc(`text-${size}`, `font-${weight}`, className)}
       style={customStyle}
       {...props}
     >
