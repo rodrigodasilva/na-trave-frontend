@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderWrapper = styled.header`
+export const AppBarWrapper = styled.header`
   align-items: center;
   background: var(--primary);
   color: var(--primary-contrast);
@@ -13,7 +13,7 @@ export const HeaderWrapper = styled.header`
   padding: 16px;
 `;
 
-export const HeaderContent = styled.div`
+export const AppBarContent = styled.div`
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;

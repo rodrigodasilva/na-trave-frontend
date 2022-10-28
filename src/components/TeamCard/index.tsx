@@ -2,7 +2,7 @@ import cc from "classnames";
 
 import * as S from "./styles";
 
-interface TeamCard {
+interface TeamCardProps {
   type: "away" | "home";
   team?: {
     abbr: string;
@@ -10,7 +10,7 @@ interface TeamCard {
   };
 }
 
-const TeamCard: React.FC<TeamCard> = ({ type = "home", team }) => {
+const TeamCard: React.FC<TeamCardProps> = ({ type = "home", team }) => {
   return (
     <S.TeamCardWrapper className={cc(`team-card--${type}`)}>
       <span>{team?.abbr}</span>

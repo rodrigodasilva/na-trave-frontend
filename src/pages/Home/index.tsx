@@ -1,10 +1,10 @@
-import { CaretLeft, CaretRight, X } from "phosphor-react";
+import { CaretLeft, CaretRight } from "phosphor-react";
 
-import TeamCard from "@/components/TeamCard";
+import AppBar from "@/components/AppBar";
+import MatchCard from "@/components/MatchCard";
 import Typography from "@/components/Typography";
 import DefaultLayout from "@/layouts/Default";
 
-import { Header } from "./components/Header";
 import * as S from "./styles";
 
 const data = [
@@ -23,8 +23,8 @@ const data = [
     id: 6,
     homeTeamId: 12,
     awayTeamId: 31,
-    homeTeamScore: null,
-    awayTeamScore: null,
+    homeTeamScore: 2,
+    awayTeamScore: 0,
     datetime: "2022-11-22T13:00:00.000Z",
     stage: "Fase de Grupos",
     homeTeam: { id: 12, name: "Dinamarca", abbr: "DIN", logo: "din.png" },
@@ -56,7 +56,7 @@ const data = [
 
 const Home: React.FC = () => {
   return (
-    <DefaultLayout header={<Header />}>
+    <DefaultLayout header={<AppBar />}>
       <S.CurrentDate>
         <CaretLeft size={24} />
         <Typography size="md" color="gray-700" weight="bold">
@@ -66,26 +66,9 @@ const Home: React.FC = () => {
       </S.CurrentDate>
       <S.MatchList>
         {data.map(match => (
-          <S.MatchItem key={match.id}>
-            <S.MatchHeader>
-              <Typography size="md" color="gray-600" weight="bold">
-                {match.stage}
-              </Typography>
-              <Typography size="md" color="gray-600" weight="normal" as="span">
-                13:00h
-              </Typography>
-            </S.MatchHeader>
-            <S.MatchBody>
-              <TeamCard team={match.homeTeam} type="home" />
-              <X size={24} />
-              <TeamCard team={match.awayTeam} type="away" />
-            </S.MatchBody>
-            <S.MatchFooter>
-              <Typography size="md" color="primary" weight="normal">
-                Ver detalhes
-              </Typography>
-            </S.MatchFooter>
-          </S.MatchItem>
+          <li key={match.id}>
+            <MatchCard match={match} />
+          </li>
         ))}
       </S.MatchList>
     </DefaultLayout>
