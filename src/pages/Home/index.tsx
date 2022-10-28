@@ -1,7 +1,8 @@
 import { CaretLeft, CaretRight } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 import AppBar from "@/components/AppBar";
-import MatchCard from "@/components/MatchCard";
+import * as MatchCard from "@/components/MatchCard";
 import Typography from "@/components/Typography";
 import DefaultLayout from "@/layouts/Default";
 
@@ -67,7 +68,15 @@ const Home: React.FC = () => {
       <S.MatchList>
         {data.map(match => (
           <li key={match.id}>
-            <MatchCard match={match} />
+            <MatchCard.Card match={match}>
+              <MatchCard.Footer>
+                <Link to="/match">
+                  <Typography size="md" color="primary" weight="normal">
+                    Ver detalhes
+                  </Typography>
+                </Link>
+              </MatchCard.Footer>
+            </MatchCard.Card>
           </li>
         ))}
       </S.MatchList>

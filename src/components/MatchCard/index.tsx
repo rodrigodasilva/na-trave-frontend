@@ -1,3 +1,4 @@
+import cc from "classnames";
 import { X } from "phosphor-react";
 
 import TeamCard from "../TeamCard";
@@ -10,6 +11,7 @@ interface Team {
 }
 
 interface MatchCardProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
+  variant?: "outline" | "clean";
   match: {
     stage: string;
     homeTeamScore: null | number;
@@ -19,39 +21,41 @@ interface MatchCardProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   };
 }
 
-const MatchCard: React.FC<MatchCardProps> = ({ match, ...rest }) => {
+export const Card: React.FC<MatchCardProps> = ({
+  match,
+  children,
+  variant = "outline",
+  className,
+  ...rest
+}) => {
   return (
-    <S.MatchCard {...rest}>
-      <S.MatchHeader>
+    <S.Card className={cc(`card--${variant}`, className)} {...rest}>
+      <S.Header>
         <Typography size="md" color="gray-600" weight="bold">
           {match.stage}
         </Typography>
         <Typography size="md" color="gray-600" weight="normal" as="span">
           13:00h
         </Typography>
-      </S.MatchHeader>
-      <S.MatchBody>
+      </S.Header>
+      <S.Body>
         <TeamCard team={match.homeTeam} type="home" />
-        <S.MatchHunch>
+        <S.Hunch>
           <Typography size="2xl" color="gray-600" weight="extrabold">
             {match.homeTeamScore ?? ""}
           </Typography>
-        </S.MatchHunch>
+        </S.Hunch>
         <X size={24} />
-        <S.MatchHunch>
+        <S.Hunch>
           <Typography size="2xl" color="gray-600" weight="extrabold">
             {match.awayTeamScore ?? ""}
           </Typography>
-        </S.MatchHunch>
+        </S.Hunch>
         <TeamCard team={match.awayTeam} type="away" />
-      </S.MatchBody>
-      <S.MatchFooter>
-        <Typography size="md" color="primary" weight="normal">
-          Ver detalhes
-        </Typography>
-      </S.MatchFooter>
-    </S.MatchCard>
+      </S.Body>
+      {children ? children : null}
+    </S.Card>
   );
 };
 
-export default MatchCard;
+export { Footer } from "./styles";

@@ -6,6 +6,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "contained" | "text";
   color?: "primary" | "neutral";
   active?: boolean;
+  startIcon?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -14,6 +15,7 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
   children,
   active = false,
+  startIcon,
   ...rest
 }) => {
   return (
@@ -23,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
       })}
       {...rest}
     >
+      {startIcon ? startIcon : null}
       {children}
     </S.ButtonWrapper>
   );
