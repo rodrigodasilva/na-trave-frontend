@@ -1,6 +1,7 @@
-import { ArrowLeft, Plus } from "phosphor-react";
 import { Link } from "react-router-dom";
 
+import { ReactComponent as ArrowLeft } from "@/assets/icons/arrow_left.svg";
+import { ReactComponent as IconPlus } from "@/assets/icons/plus.svg";
 import AppBar from "@/components/AppBar";
 import Button from "@/components/Button";
 import * as MatchCard from "@/components/MatchCard";
@@ -27,17 +28,13 @@ const Match: React.FC = () => {
     <DefaultLayout header={<AppBar />}>
       <S.Header>
         <Link to="/">
-          <Button
-            startIcon={<ArrowLeft size={18} />}
-            variant="text"
-            color="neutral"
-          >
+          <Button startIcon={<ArrowLeft />} variant="text" color="neutral">
             Voltar
           </Button>
         </Link>
-        <Button startIcon={<Plus size={16} />}>Nova aposta</Button>
+        <Button startIcon={<IconPlus width={12} />}>Nova aposta</Button>
       </S.Header>
-      <MatchCard.Card match={data} variant="clean" />
+      <MatchCard.Card match={data} variant="clean" className="mb-40" />
       <Tabs.Root defaultValue="tab1" orientation="horizontal">
         <Tabs.List aria-label="tabs example">
           <Tabs.Trigger value="tab1">Todos</Tabs.Trigger>

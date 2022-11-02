@@ -24,7 +24,6 @@ export const Body = styled.section`
   width: 100%;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
   max-width: 480px;
 
   svg {
@@ -41,4 +40,6 @@ export const Hunch = styled.span`
   margin: 0 auto;
 `;
 
-export const Footer = styled.footer``;
+export const Footer = styled.footer`
+  margin-top: 24px;
+`;

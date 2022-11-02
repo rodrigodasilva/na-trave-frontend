@@ -1,6 +1,7 @@
-import { CaretLeft, CaretRight } from "phosphor-react";
 import { Link } from "react-router-dom";
 
+import { ReactComponent as IconCaretLeft } from "@/assets/icons/caret_left.svg";
+import { ReactComponent as IconCaretRight } from "@/assets/icons/caret_right.svg";
 import AppBar from "@/components/AppBar";
 import * as MatchCard from "@/components/MatchCard";
 import Typography from "@/components/Typography";
@@ -59,11 +60,11 @@ const Home: React.FC = () => {
   return (
     <DefaultLayout header={<AppBar />}>
       <S.CurrentDate>
-        <CaretLeft size={24} />
+        <IconCaretLeft width={24} />
         <Typography size="md" color="gray-700" weight="bold">
           28 de outubro
         </Typography>
-        <CaretRight size={24} />
+        <IconCaretRight width={24} />
       </S.CurrentDate>
       <S.MatchList>
         {data.map(match => (

@@ -78,6 +78,7 @@ const GlobalStyles = createGlobalStyle`
   .my-40 { margin: 40px 0; }
   .mb-16 { margin-bottom: 16px; }
   .mb-8 { margin-bottom: 8px; }
+  .mb-40 { margin-bottom: 40px; }
   .mr-8 { margin-right: 8px; }
   .mx-auto { margin: 0 auto; }
 

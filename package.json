@@ -30,7 +30,6 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "keen-slider": "^6.8.3",
-    "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.3.0",
@@ -72,6 +71,7 @@
     "start-server-and-test": "^1.14.0",
     "ts-jest": "^28.0.5",
     "typescript": "^4.7.4",
-    "vite": "^2.9.12"
+    "vite": "^2.9.12",
+    "vite-plugin-svgr": "^2.2.2"
   }
 }

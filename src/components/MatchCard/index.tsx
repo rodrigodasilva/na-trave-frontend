@@ -1,5 +1,6 @@
 import cc from "classnames";
-import { X } from "phosphor-react";
+
+import { ReactComponent as IconX } from "@/assets/icons/x.svg";
 
 import TeamCard from "../TeamCard";
 import Typography from "../Typography";
@@ -45,7 +46,7 @@ export const Card: React.FC<MatchCardProps> = ({
             {match.homeTeamScore ?? ""}
           </Typography>
         </S.Hunch>
-        <X size={24} />
+        <IconX width={24} />
         <S.Hunch>
           <Typography size="2xl" color="gray-500" weight="extrabold">
             {match.awayTeamScore ?? ""}

@@ -4,6 +4,7 @@ export const CurrentDate = styled.nav`
   display: flex;
   gap: 24px;
   justify-content: center;
+  align-items: center;
 
   svg {
     color: var(--primary);
