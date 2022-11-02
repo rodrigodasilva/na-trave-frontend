@@ -10,8 +10,16 @@ export const ButtonWrapper = styled.button`
   font-weight: 400;
   justify-content: center;
   gap: 8px;
-  height: 32px;
-  padding: 10px 12px;
+
+  &.button--sm {
+    height: 24px;
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+  &.button--md {
+    height: 32px;
+    padding: 10px 12px;
+  }
 
   &.button--contained.button--primary {
     background-color: var(--primary);
@@ -23,7 +31,21 @@ export const ButtonWrapper = styled.button`
     color: var(--gray-500);
   }
 
+  &.button--ghost.button--primary {
+    background-color: var(--primary-light);
+    color: var(--primary);
+  }
+  &.button--ghost.button--blue {
+    background-color: var(--blue-200);
+    color: var(--blue-800);
+  }
+
   &.button--active {
     opacity: 0.8;
+  }
+
+  svg {
+    fill: currentColor;
+    color: currentColor;
   }
 `;

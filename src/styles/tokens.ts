@@ -16,6 +16,11 @@ export const colors = css`
   --gray-700: rgb(55 65 81);
   --gray-800: rgb(31 41 55);
   --gray-900: rgb(17 24 39);
+
+  --slate-100: #f1f5f9;
+
+  --blue-200: #bfdbfe;
+  --blue-800: #075985;
 `;
 
 export const fontSizes = css`

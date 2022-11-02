@@ -6,9 +6,10 @@ import AppBar from "@/components/AppBar";
 import Button from "@/components/Button";
 import * as MatchCard from "@/components/MatchCard";
 import * as Tabs from "@/components/Tabs";
-// import Typography from "@/components/Typography";
 import DefaultLayout from "@/layouts/Default";
 
+import AllHunchs from "./components/Hunchs/AllHunchs.";
+import SellerHunchs from "./components/Hunchs/SellerHunchs";
 import * as S from "./styles";
 
 const data = {
@@ -35,13 +36,17 @@ const Match: React.FC = () => {
         <Button startIcon={<IconPlus width={12} />}>Nova aposta</Button>
       </S.Header>
       <MatchCard.Card match={data} variant="clean" className="mb-40" />
-      <Tabs.Root defaultValue="tab1" orientation="horizontal">
-        <Tabs.List aria-label="tabs example">
-          <Tabs.Trigger value="tab1">Todos</Tabs.Trigger>
-          <Tabs.Trigger value="tab2">Feitos por mim</Tabs.Trigger>
+      <Tabs.Root defaultValue="all" orientation="horizontal">
+        <Tabs.List aria-label="tabs">
+          <Tabs.Trigger value="all">Todos</Tabs.Trigger>
+          <Tabs.Trigger value="by-seller">Feitos por mim</Tabs.Trigger>
         </Tabs.List>
-        <Tabs.Content value="tab1">Todos</Tabs.Content>
-        <Tabs.Content value="tab2">Feitos por mim</Tabs.Content>
+        <Tabs.Content value="all">
+          <AllHunchs />
+        </Tabs.Content>
+        <Tabs.Content value="by-seller">
+          <SellerHunchs />
+        </Tabs.Content>
       </Tabs.Root>
     </DefaultLayout>
   );

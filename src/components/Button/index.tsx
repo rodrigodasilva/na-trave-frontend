@@ -3,13 +3,15 @@ import cc from "classnames";
 import * as S from "./styles";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "contained" | "text";
-  color?: "primary" | "neutral";
+  size?: "sm" | "md";
+  variant?: "contained" | "text" | "ghost";
+  color?: "primary" | "blue" | "neutral";
   active?: boolean;
   startIcon?: React.ReactNode;
 }
 
 const Button: React.FC<ButtonProps> = ({
+  size = "md",
   variant = "contained",
   color = "primary",
   className = "",
@@ -20,9 +22,13 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <S.ButtonWrapper
-      className={cc(`button--${variant} button--${color}`, className, {
-        "button--active": active,
-      })}
+      className={cc(
+        `button--${size} button--${variant} button--${color}`,
+        className,
+        {
+          "button--active": active,
+        }
+      )}
       {...rest}
     >
       {startIcon ? startIcon : null}

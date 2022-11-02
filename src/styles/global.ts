@@ -80,6 +80,7 @@ const GlobalStyles = createGlobalStyle`
   .mb-8 { margin-bottom: 8px; }
   .mb-40 { margin-bottom: 40px; }
   .mr-8 { margin-right: 8px; }
+  .mr-12 { margin-right: 12px; }
   .mx-auto { margin: 0 auto; }
 
   .block {display: block; }
@@ -106,6 +107,9 @@ const GlobalStyles = createGlobalStyle`
   .self-center	{ align-self: center; }
 
   .w-full	{ width: 100%; }
+
+  .text-center	{ text-align: center; }
+  .text-left	{ text-align: left; }
 `;
 
 export default GlobalStyles;
