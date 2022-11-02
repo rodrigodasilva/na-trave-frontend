@@ -4,12 +4,14 @@ import { ReactComponent as ArrowLeft } from "@/assets/icons/arrow_left.svg";
 import { ReactComponent as IconPlus } from "@/assets/icons/plus.svg";
 import AppBar from "@/components/AppBar";
 import Button from "@/components/Button";
+import * as Dialog from "@/components/Dialog";
 import * as MatchCard from "@/components/MatchCard";
 import * as Tabs from "@/components/Tabs";
 import DefaultLayout from "@/layouts/Default";
 
 import AllHunchs from "./components/Hunchs/AllHunchs.";
 import SellerHunchs from "./components/Hunchs/SellerHunchs";
+import ModalHunch from "./components/ModalHunch";
 import * as S from "./styles";
 
 const data = {
@@ -33,7 +35,12 @@ const Match: React.FC = () => {
             Voltar
           </Button>
         </Link>
-        <Button startIcon={<IconPlus width={12} />}>Nova aposta</Button>
+        <Dialog.Root>
+          <Dialog.Trigger asChild>
+            <Button startIcon={<IconPlus width={12} />}>Nova aposta</Button>
+          </Dialog.Trigger>
+          <ModalHunch />
+        </Dialog.Root>
       </S.Header>
       <MatchCard.Card match={data} variant="clean" className="mb-40" />
       <Tabs.Root defaultValue="all" orientation="horizontal">

@@ -40,6 +40,10 @@ const GlobalStyles = createGlobalStyle`
     max-width: 100%;
   }
 
+  svg {
+    fill: currentColor;
+  }
+
   input,
   button,
   textarea,
