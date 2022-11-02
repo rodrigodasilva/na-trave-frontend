@@ -31,23 +31,23 @@ export const Card: React.FC<MatchCardProps> = ({
   return (
     <S.Card className={cc(`card--${variant}`, className)} {...rest}>
       <S.Header>
-        <Typography size="md" color="gray-600" weight="bold">
+        <Typography size="md" color="gray-500" weight="bold">
           {match.stage}
         </Typography>
-        <Typography size="md" color="gray-600" weight="normal" as="span">
+        <Typography size="md" color="gray-500" weight="normal" as="span">
           13:00h
         </Typography>
       </S.Header>
       <S.Body>
         <TeamCard team={match.homeTeam} type="home" />
         <S.Hunch>
-          <Typography size="2xl" color="gray-600" weight="extrabold">
+          <Typography size="2xl" color="gray-500" weight="extrabold">
             {match.homeTeamScore ?? ""}
           </Typography>
         </S.Hunch>
         <X size={24} />
         <S.Hunch>
-          <Typography size="2xl" color="gray-600" weight="extrabold">
+          <Typography size="2xl" color="gray-500" weight="extrabold">
             {match.awayTeamScore ?? ""}
           </Typography>
         </S.Hunch>

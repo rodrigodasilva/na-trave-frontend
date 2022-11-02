@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import AppBar from "@/components/AppBar";
 import Button from "@/components/Button";
 import * as MatchCard from "@/components/MatchCard";
+import * as Tabs from "@/components/Tabs";
 // import Typography from "@/components/Typography";
 import DefaultLayout from "@/layouts/Default";
 
@@ -37,6 +38,14 @@ const Match: React.FC = () => {
         <Button startIcon={<Plus size={16} />}>Nova aposta</Button>
       </S.Header>
       <MatchCard.Card match={data} variant="clean" />
+      <Tabs.Root defaultValue="tab1" orientation="horizontal">
+        <Tabs.List aria-label="tabs example">
+          <Tabs.Trigger value="tab1">Todos</Tabs.Trigger>
+          <Tabs.Trigger value="tab2">Feitos por mim</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="tab1">Todos</Tabs.Content>
+        <Tabs.Content value="tab2">Feitos por mim</Tabs.Content>
+      </Tabs.Root>
     </DefaultLayout>
   );
 };
