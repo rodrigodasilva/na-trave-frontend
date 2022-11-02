@@ -1,4 +1,5 @@
 import cc from "classnames";
+import React from "react";
 
 import * as S from "./styles";
 
@@ -10,18 +11,25 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   startIcon?: React.ReactNode;
 }
 
-const Button: React.FC<ButtonProps> = ({
-  size = "md",
-  variant = "contained",
-  color = "primary",
-  className = "",
-  children,
-  active = false,
-  startIcon,
-  ...rest
-}) => {
+const ButtonComponent: React.ForwardRefRenderFunction<
+  HTMLButtonElement,
+  ButtonProps
+> = (
+  {
+    size = "md",
+    variant = "contained",
+    color = "primary",
+    className = "",
+    children,
+    active = false,
+    startIcon,
+    ...rest
+  },
+  ref
+) => {
   return (
     <S.ButtonWrapper
+      ref={ref}
       className={cc(
         `button--${size} button--${variant} button--${color}`,
         className,
@@ -37,4 +45,6 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ButtonComponent
+);
