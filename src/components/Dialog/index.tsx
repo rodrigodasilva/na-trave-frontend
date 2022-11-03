@@ -11,21 +11,21 @@ interface ContentProps {
 const Content = ({ children, ...props }: ContentProps) => {
   return (
     <DialogPrimitive.Portal>
-      <S.StyledOverlay />
-      <S.StyledContent {...props}>{children}</S.StyledContent>
+      <S.Overlay />
+      <S.Content {...props}>{children}</S.Content>
     </DialogPrimitive.Portal>
   );
 };
 
 const Close = () => (
   <DialogPrimitive.Close asChild>
-    <S.StyledCloseButton>
+    <S.CloseButton>
       <IconX />
-    </S.StyledCloseButton>
+    </S.CloseButton>
   </DialogPrimitive.Close>
 );
 
 export const Root = DialogPrimitive.Root;
 export const Trigger = DialogPrimitive.Trigger;
 export { Close, Content };
-export const Title = S.StyledTitle;
+export { Body, Footer, Header, Title } from "./styles";

@@ -11,14 +11,19 @@ export const ButtonWrapper = styled.button`
   justify-content: center;
   gap: 8px;
 
-  &.button--sm {
+  &.button--xs {
     height: 24px;
     padding: 4px 10px;
     font-size: 13px;
   }
-  &.button--md {
+  &.button--sm {
     height: 32px;
-    padding: 10px 12px;
+    padding: 4px 10px;
+    font-size: 14px;
+  }
+  &.button--md {
+    height: 40px;
+    padding: 10px 16px;
   }
 
   &.button--contained.button--primary {
@@ -38,6 +43,10 @@ export const ButtonWrapper = styled.button`
   &.button--ghost.button--blue {
     background-color: var(--blue-200);
     color: var(--blue-800);
+  }
+  &.button--ghost.button--neutral {
+    background-color: var(--gray-200);
+    color: var(--gray-800);
   }
 
   &.button--active {

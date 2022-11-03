@@ -19,27 +19,6 @@ export const Header = styled.header`
   margin-bottom: 12px;
 `;
 
-export const Body = styled.section`
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  max-width: 480px;
-
-  svg {
-    color: var(--gray-400);
-  }
-`;
-
-export const Hunch = styled.span`
-  width: 56px;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-`;
-
 export const Footer = styled.footer`
   margin-top: 24px;
 `;

@@ -82,6 +82,9 @@ const GlobalStyles = createGlobalStyle`
   .my-40 { margin: 40px 0; }
   .mb-16 { margin-bottom: 16px; }
   .mb-8 { margin-bottom: 8px; }
+  .mb-12 { margin-bottom: 12px; }
+  .mb-18 { margin-bottom: 18px; }
+  .mb-32 { margin-bottom: 32px; }
   .mb-40 { margin-bottom: 40px; }
   .mr-8 { margin-right: 8px; }
   .mr-12 { margin-right: 12px; }

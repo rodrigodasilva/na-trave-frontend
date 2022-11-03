@@ -37,7 +37,7 @@ const Match: React.FC = () => {
         </Link>
         <Dialog.Root>
           <Dialog.Trigger asChild>
-            <Button startIcon={<IconPlus width={12} />}>Nova aposta</Button>
+            <Button startIcon={<IconPlus width={12} />}>Novo palpite</Button>
           </Dialog.Trigger>
           <ModalHunch />
         </Dialog.Root>

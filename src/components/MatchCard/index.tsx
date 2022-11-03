@@ -1,8 +1,6 @@
 import cc from "classnames";
 
-import { ReactComponent as IconX } from "@/assets/icons/x.svg";
-
-import TeamCard from "../TeamCard";
+import HunchForm from "../HunchForm";
 import Typography from "../Typography";
 import * as S from "./styles";
 
@@ -39,21 +37,7 @@ export const Card: React.FC<MatchCardProps> = ({
           13:00h
         </Typography>
       </S.Header>
-      <S.Body>
-        <TeamCard team={match.homeTeam} type="home" />
-        <S.Hunch>
-          <Typography size="2xl" color="gray-500" weight="extrabold">
-            {match.homeTeamScore ?? ""}
-          </Typography>
-        </S.Hunch>
-        <IconX width={24} />
-        <S.Hunch>
-          <Typography size="2xl" color="gray-500" weight="extrabold">
-            {match.awayTeamScore ?? ""}
-          </Typography>
-        </S.Hunch>
-        <TeamCard team={match.awayTeam} type="away" />
-      </S.Body>
+      <HunchForm />
       {children ? children : null}
     </S.Card>
   );

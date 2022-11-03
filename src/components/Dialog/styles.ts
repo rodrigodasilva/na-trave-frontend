@@ -1,7 +1,7 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import styled from "styled-components";
 
-export const StyledOverlay = styled(DialogPrimitive.Overlay)`
+export const Overlay = styled(DialogPrimitive.Overlay)`
   background-color: rgba(0, 0, 0, 0.44);
   position: fixed;
   inset: 0px;
@@ -20,12 +20,12 @@ export const StyledOverlay = styled(DialogPrimitive.Overlay)`
   }
 `;
 
-export const StyledCloseButton = styled.button`
+export const CloseButton = styled.button`
   background-color: transparent;
   border: none;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 18px;
+  right: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,7 +45,7 @@ export const StyledCloseButton = styled.button`
   }
 `;
 
-export const StyledContent = styled(DialogPrimitive.Content)`
+export const Content = styled(DialogPrimitive.Content)`
   background-color: white;
   border-radius: 6px;
   box-shadow: rgb(14 18 22 / 35%) 0px 10px 38px -10px,
@@ -57,7 +57,6 @@ export const StyledContent = styled(DialogPrimitive.Content)`
   width: 90vw;
   max-width: 450px;
   max-height: 85vh;
-  padding: 18px;
 
   &:focus {
     outline: none;
@@ -78,9 +77,26 @@ export const StyledContent = styled(DialogPrimitive.Content)`
   }
 `;
 
-export const StyledTitle = styled(DialogPrimitive.Title)`
+export const Title = styled(DialogPrimitive.Title)`
   margin: 0px;
   font-weight: 600;
   color: var(--gray-600);
   font-size: 16px;
+`;
+
+export const Header = styled.header`
+  padding: 18px;
+  border-bottom: 0.5px solid var(--gray-200);
+`;
+
+export const Body = styled.div`
+  padding: 18px;
+`;
+
+export const Footer = styled.footer`
+  padding: 18px;
+  border-top: 0.5px solid var(--gray-200);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
 `;
