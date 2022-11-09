@@ -24,20 +24,20 @@ export const colors = css`
 `;
 
 export const fontSizes = css`
-  --text-xxs: 0.625rem;
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-md: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 2.25rem;
-  --text-4xl: 2rem;
-  --text-5xl: 2.25rem;
-  --text-6xl: 3rem;
-  --text-7xl: 4rem;
-  --text-8xl: 4.5rem;
-  --text-9xl: 6rem;
+  --text-xxs: 10px;
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 36px;
+  --text-5xl: 48px;
+  --text-6xl: 60px;
+  --text-7xl: 72px;
+  --text-8xl: 96px;
+  --text-9xl: 128px;
 `;
 
 export const radii = css`

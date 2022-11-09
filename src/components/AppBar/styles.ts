@@ -17,9 +17,20 @@ export const AppBarContent = styled.div`
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: auto;
 
   img {
     width: 96px;
     height: 27px;
   }
+`;
+
+export const AppBarContentRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
 `;

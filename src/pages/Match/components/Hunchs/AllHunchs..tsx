@@ -15,8 +15,8 @@ const AllHunchs: React.FC = () => {
       <Table>
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Placar</th>
+            <th className="text-left">Nome</th>
+            <th className="text-left">Placar</th>
           </tr>
         </thead>
         <tbody>
