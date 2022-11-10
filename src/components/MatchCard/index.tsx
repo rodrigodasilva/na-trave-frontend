@@ -1,23 +1,36 @@
 import cc from "classnames";
 
+import { formatDate } from "@/utils/dateUtils";
+
 import HunchForm from "../HunchForm";
 import Typography from "../Typography";
 import * as S from "./styles";
 
-interface Team {
-  abbr: string;
-  logo: string;
+interface Match {
+  id: number;
+  homeTeamId: number;
+  awayTeamId: number;
+  homeTeamScore: null;
+  awayTeamScore: null;
+  datetime: string;
+  stage: string;
+  homeTeam: {
+    id: number;
+    name: string;
+    abbr: string;
+    logo: string;
+  };
+  awayTeam: {
+    id: number;
+    name: string;
+    abbr: string;
+    logo: string;
+  };
 }
 
 interface MatchCardProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   variant?: "outline" | "clean";
-  match: {
-    stage: string;
-    homeTeamScore: null | number;
-    awayTeamScore: null | number;
-    homeTeam: Team;
-    awayTeam: Team;
-  };
+  match: Match;
 }
 
 export const Card: React.FC<MatchCardProps> = ({
@@ -34,10 +47,10 @@ export const Card: React.FC<MatchCardProps> = ({
           {match.stage}
         </Typography>
         <Typography size="md" color="gray-500" weight="normal" as="span">
-          13:00h
+          {formatDate(match.datetime, "HH:mm")}
         </Typography>
       </S.Header>
-      <HunchForm />
+      <HunchForm match={match} />
       {children ? children : null}
     </S.Card>
   );

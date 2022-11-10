@@ -1,5 +1,7 @@
 import cc from "classnames";
 
+import { formatFlagUrl } from "@/utils/formatFlagUrl";
+
 import Typography from "../Typography";
 import * as S from "./styles";
 
@@ -17,7 +19,15 @@ const TeamCard: React.FC<TeamCardProps> = ({ type = "home", team }) => {
       <Typography size="md" color="gray-500" weight="normal" as="span">
         {team?.abbr}
       </Typography>
-      <span className="team-card__flag" />
+      {team?.logo ? (
+        <img
+          className="team-card__flag"
+          src={formatFlagUrl(team?.logo)}
+          alt=""
+        />
+      ) : (
+        <span className="team-card__flag" />
+      )}
     </S.TeamCardWrapper>
   );
 };

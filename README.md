@@ -70,7 +70,3 @@ npm run serve
   ```bash
   npm run test:unit:coverage
   ```
-
-## License
-
-This project is licensed under the MIT License.
