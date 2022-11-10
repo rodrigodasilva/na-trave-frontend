@@ -9,6 +9,7 @@ import { MessageInfo } from "@/components/MessageInfo";
 import Spinner from "@/components/Spinner";
 import * as Tabs from "@/components/Tabs";
 import { useMatch } from "@/hooks/useMatch";
+import { formatDate } from "@/utils/dateUtils";
 
 import AllHunchs from "./components/Hunchs/AllHunchs.";
 import SellerHunchs from "./components/Hunchs/SellerHunchs";
@@ -25,10 +26,12 @@ const Match: React.FC = () => {
     return <MessageInfo>Houve um erro ao carregar a partida</MessageInfo>;
   if (!match) return <MessageInfo>Partida não encontrada</MessageInfo>;
 
+  const formattedMatchDatetime = formatDate(match?.datetime, "yy-MM-DD");
+
   return (
     <>
       <S.Header>
-        <Link to="/">
+        <Link to={`/${formattedMatchDatetime}`}>
           <Button startIcon={<ArrowLeft />} variant="text" color="neutral">
             Voltar
           </Button>

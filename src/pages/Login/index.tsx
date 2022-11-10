@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom";
 
 import { ReactComponent as ArrowLeft } from "@/assets/icons/arrow_left.svg";
-import AppBar from "@/components/AppBar";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import Typography from "@/components/Typography";
-import DefaultLayout from "@/layouts/Default";
 
 import * as S from "./styles";
 
 const Login: React.FC = () => {
   return (
-    <DefaultLayout header={<AppBar />}>
+    <>
       <S.LoginHeader>
         <Link to="/">
           <Button startIcon={<ArrowLeft />} variant="text" color="neutral">
@@ -35,7 +33,7 @@ const Login: React.FC = () => {
           <Button>Acessar</Button>
         </S.LoginFormActions>
       </S.LoginForm>
-    </DefaultLayout>
+    </>
   );
 };
 

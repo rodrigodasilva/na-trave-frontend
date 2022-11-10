@@ -9,7 +9,7 @@ import * as S from "./styles";
 
 interface MatchPaginationProps {
   onDateChange: (date: Date) => void;
-  currentDate: Date;
+  currentDate: Date | string;
   isLoading?: boolean;
 }
 

@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 import { apiBaseURL } from "@/constants/api";
-import { formatDate } from "@/utils/dateUtils";
 
 interface Match {
   id: number;
@@ -31,10 +30,8 @@ async function fetchMatches(date: string) {
   return res.data as Match[];
 }
 
-export function useMatches(date: Date) {
-  const formattedDate = formatDate(date, "yy-MM-DD");
-
-  return useQuery(["matches", date], () => fetchMatches(formattedDate), {
+export function useMatches(date: string) {
+  return useQuery(["matches", date], () => fetchMatches(date), {
     keepPreviousData: true,
     staleTime: 5000,
   });

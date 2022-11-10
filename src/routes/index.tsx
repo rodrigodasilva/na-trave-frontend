@@ -17,6 +17,7 @@ export default function AppRoutes() {
         <Suspense fallback={<Spinner className="mx-auto" />}>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/:date" element={<Home />} />
             <Route path="/match/:id" element={<Match />} />
             <Route path="/login" element={<Login />} />
           </Routes>

@@ -1,29 +1,32 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as MatchCard from "@/components/MatchCard";
 import { MessageInfo } from "@/components/MessageInfo";
 import Typography from "@/components/Typography";
 import { useMatches } from "@/hooks/useMatches";
-import { getInitialMatchesDate } from "@/utils/dateUtils";
+import { formatDate, getInitialMatchesDate } from "@/utils/dateUtils";
 
 import { MatchPagination } from "./components/MatchPagination";
 import * as S from "./styles";
 
 const Home: React.FC = () => {
-  const [date, setDate] = useState(getInitialMatchesDate());
+  const { date } = useParams();
+  const navigate = useNavigate();
 
-  const { data, isLoading, isError } = useMatches(date);
+  const currentDate = date || getInitialMatchesDate().toISOString();
+
+  const { data, isLoading, isError } = useMatches(currentDate);
 
   const handleDateChange = (newDate: Date) => {
-    setDate(newDate);
+    const formattedDate = formatDate(newDate, "yy-MM-DD");
+    navigate(`/${formattedDate}`);
   };
 
   return (
     <>
       <MatchPagination
         isLoading={isLoading}
-        currentDate={date}
+        currentDate={currentDate}
         onDateChange={handleDateChange}
       />
       <S.MatchList>
