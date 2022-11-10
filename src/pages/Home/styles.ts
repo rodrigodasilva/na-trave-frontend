@@ -12,12 +12,3 @@ export const MatchList = styled.ul`
     margin-bottom: 12px;
   }
 `;
-
-export const MatchMessageInfo = styled.p`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  color: var(--gray-500);
-  text-align: center;
-`;

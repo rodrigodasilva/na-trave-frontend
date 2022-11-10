@@ -31,12 +31,14 @@ interface Match {
 interface MatchCardProps extends React.ButtonHTMLAttributes<HTMLDivElement> {
   variant?: "outline" | "clean";
   match: Match;
+  dateFormat?: string;
 }
 
 export const Card: React.FC<MatchCardProps> = ({
   match,
   children,
   variant = "outline",
+  dateFormat = "HH:mm[h]",
   className,
   ...rest
 }) => {
@@ -47,7 +49,7 @@ export const Card: React.FC<MatchCardProps> = ({
           {match.stage}
         </Typography>
         <Typography size="md" color="gray-500" weight="normal" as="span">
-          {formatDate(match.datetime, "HH:mm")}
+          {formatDate(match.datetime, dateFormat)}
         </Typography>
       </S.Header>
       <HunchForm match={match} />

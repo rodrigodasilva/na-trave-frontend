@@ -15,8 +15,12 @@ export const Card = styled.div`
 `;
 
 export const Header = styled.header`
-  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 12px;
+  text-align: center;
 `;
 
 export const Footer = styled.footer`
