@@ -117,6 +117,8 @@ const GlobalStyles = createGlobalStyle`
 
   .text-center	{ text-align: center; }
   .text-left	{ text-align: left; }
+
+  .cursor-pointer { cursor: pointer }
 `;
 
 export default GlobalStyles;

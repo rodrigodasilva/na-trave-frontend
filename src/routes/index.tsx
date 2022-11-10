@@ -5,6 +5,7 @@ import AppBar from "@/components/AppBar";
 import DefaultLayout from "@/layouts/Default";
 
 import Spinner from "../components/Spinner";
+import { AuthGuard } from "./AuthGuard";
 
 const Home = lazy(() => import("../pages/Home"));
 const Login = lazy(() => import("../pages/Login"));
@@ -16,10 +17,10 @@ export default function AppRoutes() {
       <DefaultLayout header={<AppBar />}>
         <Suspense fallback={<Spinner className="mx-auto" />}>
           <Routes>
+            <Route path="/login" element={<AuthGuard element={<Login />} />} />
             <Route path="/" element={<Home />} />
             <Route path="/:date" element={<Home />} />
             <Route path="/match/:id" element={<Match />} />
-            <Route path="/login" element={<Login />} />
           </Routes>
         </Suspense>
       </DefaultLayout>
