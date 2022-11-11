@@ -9,6 +9,7 @@ import * as MatchCard from "@/components/MatchCard";
 import { MessageInfo } from "@/components/MessageInfo";
 import Spinner from "@/components/Spinner";
 import * as Tabs from "@/components/Tabs";
+import { useAuthentication } from "@/hooks/useAuthentication";
 import { useMatch } from "@/hooks/useMatch";
 import { formatDate } from "@/utils/dateUtils";
 
@@ -21,6 +22,7 @@ const Match: React.FC = () => {
   const { id } = useParams();
 
   const { data: match, isLoading, isError } = useMatch(id);
+  const { session } = useAuthentication();
 
   if (isLoading) return <Spinner className="mx-auto" />;
   if (isError)
@@ -28,6 +30,8 @@ const Match: React.FC = () => {
   if (!match) return <MessageInfo>Partida não encontrada</MessageInfo>;
 
   const formattedMatchDatetime = formatDate(match?.datetime, "yy-MM-DD");
+
+  const isSellerUser = session?.user?.role === "seller";
 
   return (
     <>
@@ -37,12 +41,14 @@ const Match: React.FC = () => {
             Voltar
           </Button>
         </Link>
-        <ModalHunch
-          match={match}
-          trigger={
-            <Button startIcon={<IconPlus width={12} />}>Novo palpite</Button>
-          }
-        />
+        {isSellerUser ? (
+          <ModalHunch
+            match={match}
+            trigger={
+              <Button startIcon={<IconPlus width={12} />}>Novo palpite</Button>
+            }
+          />
+        ) : null}
       </S.Header>
 
       <MatchCard.Card
