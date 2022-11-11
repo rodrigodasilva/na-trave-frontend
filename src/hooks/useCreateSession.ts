@@ -1,8 +1,7 @@
-import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { apiBaseURL } from "@/constants/api";
+import baseApi from "@/services/baseApi";
 
 interface ICreateSession {
   email: string;
@@ -15,7 +14,7 @@ export function useCreateSession() {
   const handleCreateSession = async ({ email, password }: ICreateSession) => {
     try {
       setStatus("loading");
-      const response = await axios.post(`${apiBaseURL}/v1/login`, {
+      const response = await baseApi.post("/login", {
         email,
         password,
       });

@@ -33,19 +33,31 @@ const AuthenticationContext = createContext<AuthenticationContextData>(
   {} as AuthenticationContextData
 );
 
-const STORAGE_KEY = "@natrave:auth";
+export const STORAGE_KEY = "@natrave:auth";
+
+export const getAuthToken = () => {
+  const session = getStorageSession();
+
+  if (session) return session.token;
+
+  return null;
+};
+
+const getStorageSession = () => {
+  const storagedAuth = localStorage.getItem(STORAGE_KEY);
+
+  if (storagedAuth) {
+    return JSON.parse(storagedAuth);
+  }
+
+  return null;
+};
 
 export function AuthenticationProvider({
   children,
 }: AuthenticationProviderProps): JSX.Element {
   const [session, setSession] = useState<Session | null>(() => {
-    const storagedAuth = localStorage.getItem(STORAGE_KEY);
-
-    if (storagedAuth) {
-      return JSON.parse(storagedAuth);
-    }
-
-    return null;
+    return getStorageSession();
   });
 
   const saveSession = useCallback((newSession: Session) => {

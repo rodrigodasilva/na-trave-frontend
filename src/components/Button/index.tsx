@@ -9,6 +9,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   color?: "primary" | "blue" | "neutral";
   active?: boolean;
   startIcon?: React.ReactNode;
+  isLoading?: boolean;
+  loadingIndicator?: React.ReactNode;
 }
 
 const ButtonComponent: React.ForwardRefRenderFunction<
@@ -23,6 +25,9 @@ const ButtonComponent: React.ForwardRefRenderFunction<
     children,
     active = false,
     startIcon,
+    isLoading = false,
+    loadingIndicator,
+    disabled,
     ...rest
   },
   ref
@@ -35,10 +40,19 @@ const ButtonComponent: React.ForwardRefRenderFunction<
         className,
         {
           "button--active": active,
+          "button--is-loading": isLoading,
         }
       )}
+      disabled={disabled || isLoading}
       {...rest}
     >
+      {isLoading && loadingIndicator ? (
+        <S.LoadingIndicatorWrapper
+          className={cc(`button__loading-wrapper--${color}`)}
+        >
+          {loadingIndicator}
+        </S.LoadingIndicatorWrapper>
+      ) : null}
       {startIcon ? startIcon : null}
       {children}
     </S.ButtonWrapper>

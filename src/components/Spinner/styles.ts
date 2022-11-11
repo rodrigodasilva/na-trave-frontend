@@ -9,17 +9,25 @@ export const SpinnerWrapper = styled.span`
   align-items: center;
   justify-content: center;
 
-  span {
+  .spinner__item {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 30px;
-    height: 30px;
     margin: 8px;
-    border: 4px solid #fff;
     border-radius: 50%;
     animation: rotateSpinner 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: var(--primary) transparent transparent transparent;
+  }
+
+  &.spinner--sm .spinner__item {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+  }
+
+  &.spinner--md .spinner__item {
+    border: 4px solid #fff;
+    width: 32px;
+    height: 32px;
   }
 
   & span:nth-child(1) {

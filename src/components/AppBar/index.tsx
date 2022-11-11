@@ -8,7 +8,7 @@ import * as S from "./styles";
 
 const AppBar: React.FC = () => {
   const { session, deleteSession } = useAuthentication();
-  console.log({ session });
+
   return (
     <S.AppBarWrapper>
       <S.AppBarContent>

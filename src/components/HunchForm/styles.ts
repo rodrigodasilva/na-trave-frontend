@@ -35,6 +35,17 @@ export const HunchInput = styled.input`
     color: var(--gray-500);
     border: none;
   }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[type="number"] {
+    -moz-appearance: textfield;
+  }
 `;
 
 export const Footer = styled.footer`

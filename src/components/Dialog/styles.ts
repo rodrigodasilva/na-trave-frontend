@@ -57,6 +57,7 @@ export const Content = styled(DialogPrimitive.Content)`
   width: 90vw;
   max-width: 450px;
   max-height: 85vh;
+  overflow-y: auto;
 
   &:focus {
     outline: none;

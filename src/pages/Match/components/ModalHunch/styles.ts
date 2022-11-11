@@ -7,7 +7,23 @@ export const InputQuantityWrapper = styled.div`
   margin-bottom: 12px;
 
   input {
-    width: 42px;
+    font-size: var(--text-md);
+    font-weight: 400;
+    border: none;
+    color: var(--gray-500);
+    width: 32px;
+    text-align: center;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 `;
 

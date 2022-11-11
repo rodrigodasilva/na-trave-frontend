@@ -1,6 +1,7 @@
 import { ReactComponent as IconX } from "@/assets/icons/x.svg";
 
 import TeamCard from "../TeamCard";
+import HunchInput from "./HunchInput";
 import * as S from "./styles";
 
 interface Match {
@@ -37,19 +38,26 @@ const HunchForm: React.FC<HunchFormProps> = ({
 }) => (
   <S.HunchFormWrapper {...props}>
     <TeamCard team={match.homeTeam} type="home" />
-    <S.HunchInput
+    <HunchInput
       defaultValue={match.homeTeamScore ?? ""}
       disabled={!isEditing}
-      name="home"
+      name="homeTeamScore"
+      type="number"
+      min="0"
     />
-    <IconX width={24} />
-    <S.HunchInput
+    <HunchFormIcon />
+    <HunchInput
       defaultValue={match.awayTeamScore ?? ""}
       disabled={!isEditing}
-      name="away"
+      name="awayTeamScore"
+      type="number"
+      min="0"
     />
     <TeamCard team={match.awayTeam} type="away" />
   </S.HunchFormWrapper>
 );
 
+export const HunchFormIcon = () => <IconX width={24} />;
+export { HunchFormWrapper } from "./styles";
+export { HunchInput };
 export default HunchForm;

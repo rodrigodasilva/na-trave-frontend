@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 
-import { apiBaseURL } from "@/constants/api";
+import baseApi from "@/services/baseApi";
 
 interface Match {
   id: number;
@@ -26,7 +25,7 @@ interface Match {
 }
 
 async function fetchMatches(date: string) {
-  const res = await axios.get(`${apiBaseURL}/v1/match?date=${date}`);
+  const res = await baseApi.get(`/match?date=${date}`);
   return res.data as Match[];
 }
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { ReactComponent as ArrowLeft } from "@/assets/icons/arrow_left.svg";
@@ -36,13 +37,14 @@ const Match: React.FC = () => {
             Voltar
           </Button>
         </Link>
-        <Dialog.Root>
-          <Dialog.Trigger asChild>
+        <ModalHunch
+          match={match}
+          trigger={
             <Button startIcon={<IconPlus width={12} />}>Novo palpite</Button>
-          </Dialog.Trigger>
-          <ModalHunch />
-        </Dialog.Root>
+          }
+        />
       </S.Header>
+
       <MatchCard.Card
         match={match}
         variant="clean"

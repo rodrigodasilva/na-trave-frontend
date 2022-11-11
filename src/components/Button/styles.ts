@@ -3,13 +3,14 @@ import styled from "styled-components";
 export const ButtonWrapper = styled.button`
   align-items: center;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--rounded-md);
   cursor: pointer;
   display: inline-flex;
   font-size: 14px;
   font-weight: 400;
   justify-content: center;
   gap: 8px;
+  position: relative;
 
   &.button--xs {
     height: 24px;
@@ -45,7 +46,7 @@ export const ButtonWrapper = styled.button`
     color: var(--blue-800);
   }
   &.button--ghost.button--neutral {
-    background-color: var(--gray-200);
+    background-color: var(--gray-100);
     color: var(--gray-800);
   }
 
@@ -53,8 +54,25 @@ export const ButtonWrapper = styled.button`
     opacity: 0.8;
   }
 
+  &.button--is-loading {
+    color: transparent !important;
+  }
+
   svg {
     fill: currentColor;
     color: currentColor;
   }
+`;
+
+export const LoadingIndicatorWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  cursor: default;
+  border-radius: var(--rounded-md);
 `;
