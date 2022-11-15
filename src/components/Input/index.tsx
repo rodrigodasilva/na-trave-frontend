@@ -11,8 +11,9 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   { label, maxWidth = "100%", className, ...props },
   ref
 ) => (
-  <S.InputWrapper ref={ref} className={className} maxWidth={maxWidth}>
-    {label ? <S.InputLabel>{label}</S.InputLabel> : null} <S.Input {...props} />
+  <S.InputWrapper className={className} maxWidth={maxWidth}>
+    {label ? <S.InputLabel>{label}</S.InputLabel> : null}
+    <S.Input ref={ref} {...props} />
   </S.InputWrapper>
 );
 

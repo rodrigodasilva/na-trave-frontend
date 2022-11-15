@@ -4,10 +4,8 @@ import baseApi from "@/services/baseApi";
 
 interface Match {
   id: number;
-  homeTeamId: number;
-  awayTeamId: number;
-  homeTeamScore: null;
-  awayTeamScore: null;
+  homeTeamScore: number | null;
+  awayTeamScore: number | null;
   datetime: string;
   stage: string;
   homeTeam: {
@@ -29,7 +27,8 @@ interface Hunch {
   homeTeamScore: number;
   awayTeamScore: number;
   contactName: string;
-  payment: string;
+  contactPhone: string;
+  payment: "finished" | "pending";
   createdAt: string;
   match: Match;
 }

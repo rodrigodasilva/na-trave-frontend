@@ -14,7 +14,7 @@ import { formatDate } from "@/utils/dateUtils";
 import AllHunches from "./components/Hunchs/AllHunches";
 import PublicHunches from "./components/Hunchs/PublicHunches";
 import SellerHunches from "./components/Hunchs/SellerHunches";
-import ModalHunch from "./components/ModalHunch";
+import ModalHunchCreate from "./components/ModalHunch/ModalHunchCreate";
 import * as S from "./styles";
 
 const Match: React.FC = () => {
@@ -43,7 +43,7 @@ const Match: React.FC = () => {
           </Button>
         </Link>
         {isSellerUser ? (
-          <ModalHunch
+          <ModalHunchCreate
             match={match}
             trigger={
               <Button startIcon={<IconPlus width={12} />}>Novo palpite</Button>

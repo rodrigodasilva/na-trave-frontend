@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as z from "zod";
 
@@ -14,17 +14,15 @@ import Input, { InputLabel } from "@/components/Input";
 import Spinner from "@/components/Spinner";
 import TeamCard from "@/components/TeamCard";
 import Typography from "@/components/Typography";
-import { useCreateHunch } from "@/hooks/useCreateHunch";
+import { useUpdateHunch } from "@/hooks/useUpdateHunch";
+import { formatDate } from "@/utils/dateUtils";
 
-import InputQuantity from "./InputQuantity";
 import * as S from "./styles";
 
 interface Match {
   id: number;
-  homeTeamId: number;
-  awayTeamId: number;
-  homeTeamScore: null;
-  awayTeamScore: null;
+  homeTeamScore: number | null | string;
+  awayTeamScore: number | null | string;
   datetime: string;
   stage: string;
   homeTeam: {
@@ -41,61 +39,78 @@ interface Match {
   };
 }
 
-interface ModalHunchProps {
+interface Hunch {
+  id: string;
+  homeTeamScore: number;
+  awayTeamScore: number;
+  contactName: string;
+  contactPhone: string;
+  payment: "finished" | "pending";
+  createdAt: string;
   match: Match;
-  trigger: React.ReactNode;
 }
 
-const newHunchSchema = z.object({
+interface ModalHunchUpdateProps {
+  hunch: Hunch;
+  isOpen: boolean;
+  onOpenChange: (open: boolean) => void;
+}
+
+const updateHunchSchema = z.object({
   homeTeamScore: z.string(),
   awayTeamScore: z.string(),
-  quantity: z.number(),
   contactName: z.string(),
   contactPhone: z.string(),
   payment: z.enum(["finished", "pending"]),
 });
 
-type NewHunchFormInputs = z.infer<typeof newHunchSchema>;
+type NewHunchFormInputs = z.infer<typeof updateHunchSchema>;
 
-const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
-  const [modalIsOpened, setModalIsOpened] = useState(false);
-
-  useEffect(() => {
-    reset();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [modalIsOpened]);
-
+const ModalHunchUpdate: React.FC<ModalHunchUpdateProps> = ({
+  hunch,
+  isOpen,
+  onOpenChange,
+}) => {
   const { control, register, handleSubmit, reset } =
     useForm<NewHunchFormInputs>({
-      resolver: zodResolver(newHunchSchema),
+      resolver: zodResolver(updateHunchSchema),
       defaultValues: {
-        payment: "pending",
-        quantity: 1,
+        homeTeamScore: hunch.homeTeamScore ? String(hunch.homeTeamScore) : "0",
+        awayTeamScore: hunch.awayTeamScore ? String(hunch.awayTeamScore) : "0",
+        contactName: hunch.contactName,
+        contactPhone: hunch.contactPhone,
+        payment: hunch.payment,
       },
     });
 
-  const { addHunchMutation } = useCreateHunch();
+  const { updateHunchMutation } = useUpdateHunch();
 
   useEffect(() => {
-    if (addHunchMutation.isSuccess) {
-      setModalIsOpened(false);
+    if (updateHunchMutation.isSuccess) {
+      onOpenChange(false);
+      reset();
     }
-  }, [addHunchMutation.isSuccess]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [updateHunchMutation.isSuccess]);
 
   const onSubmit = handleSubmit(data => {
-    addHunchMutation.mutate({
-      matchId: match.id,
+    console.log({ data });
+    updateHunchMutation.mutate({
+      id: hunch.id,
       ...data,
     });
   });
 
-  return (
-    <Dialog.Root open={modalIsOpened} onOpenChange={setModalIsOpened}>
-      <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
+  const formattedMatchDatetime = formatDate(
+    hunch?.match?.datetime || "",
+    "DD[ de ]MMMM [ às ] HH:mm[h]"
+  );
 
+  return (
+    <Dialog.Root open={isOpen} onOpenChange={onOpenChange}>
       <Dialog.Content>
         <Dialog.Header>
-          <Dialog.Title>Novo palpite</Dialog.Title>
+          <Dialog.Title>Editar palpite</Dialog.Title>
           <Dialog.Close />
         </Dialog.Header>
         <Dialog.Body>
@@ -108,47 +123,36 @@ const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
             weight="normal"
             className="mb-32"
           >
-            27 de outubro, às 13:00h
+            {formattedMatchDatetime}
           </Typography>
-          <form id="form-create-hunch" onSubmit={onSubmit}>
+          <form id="form-update-hunch" onSubmit={onSubmit}>
             <HunchFormWrapper className="mb-18">
-              <TeamCard team={match.homeTeam} type="home" />
+              <TeamCard team={hunch.match.homeTeam} type="home" />
               <HunchInput
                 required
-                defaultValue={match.homeTeamScore ?? ""}
+                defaultValue={hunch.homeTeamScore ?? ""}
                 {...register("homeTeamScore")}
               />
               <HunchFormIcon />
               <HunchInput
                 required
-                defaultValue={match.awayTeamScore ?? ""}
+                defaultValue={hunch.awayTeamScore ?? ""}
                 {...register("awayTeamScore")}
               />
-              <TeamCard team={match.awayTeam} type="away" />
+              <TeamCard team={hunch.match.awayTeam} type="away" />
             </HunchFormWrapper>
-
-            <Controller
-              control={control}
-              name="quantity"
-              render={({ field }) => {
-                return (
-                  <InputQuantity
-                    value={field.value}
-                    onChange={field.onChange}
-                  />
-                );
-              }}
-            />
 
             <Input
               label="Nome"
               className="mb-12"
+              defaultValue={hunch.contactName}
               {...register("contactName")}
               required
             />
             <Input
               label="Contato"
               className="mb-12"
+              defaultValue={hunch.contactPhone}
               {...register("contactPhone")}
               required
             />
@@ -157,6 +161,7 @@ const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
             <Controller
               control={control}
               name="payment"
+              defaultValue={hunch.payment}
               render={({ field }) => {
                 return (
                   <S.RadioGroup
@@ -182,16 +187,16 @@ const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
             variant="text"
             color="neutral"
             type="button"
-            onClick={() => setModalIsOpened(false)}
+            onClick={() => onOpenChange(false)}
           >
             Cancelar
           </Button>
           <Button
-            isLoading={addHunchMutation.isLoading}
-            form="form-create-hunch"
+            isLoading={updateHunchMutation.isLoading}
+            form="form-update-hunch"
             loadingIndicator={<Spinner color="gray-100" size="sm" />}
           >
-            Adicionar
+            Atualizar
           </Button>
         </Dialog.Footer>
       </Dialog.Content>
@@ -199,4 +204,4 @@ const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
   );
 };
 
-export default ModalHunch;
+export default ModalHunchUpdate;
