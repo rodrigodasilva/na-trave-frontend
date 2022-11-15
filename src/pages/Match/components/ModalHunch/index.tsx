@@ -74,17 +74,19 @@ const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
       },
     });
 
-  const { handleCreateHunch, isLoading } = useCreateHunch();
+  const { addHunchMutation } = useCreateHunch();
 
-  const onSubmit = handleSubmit(async data => {
-    const createdHunches = await handleCreateHunch({
+  useEffect(() => {
+    if (addHunchMutation.isSuccess) {
+      setModalIsOpened(false);
+    }
+  }, [addHunchMutation.isSuccess]);
+
+  const onSubmit = handleSubmit(data => {
+    addHunchMutation.mutate({
       matchId: match.id,
       ...data,
     });
-
-    if (createdHunches && createdHunches?.length > 0) {
-      setModalIsOpened(false);
-    }
   });
 
   return (
@@ -185,7 +187,7 @@ const ModalHunch: React.FC<ModalHunchProps> = ({ match, trigger }) => {
             Cancelar
           </Button>
           <Button
-            isLoading={isLoading}
+            isLoading={addHunchMutation.isLoading}
             form="form-create-hunch"
             loadingIndicator={<Spinner color="gray-100" size="sm" />}
           >

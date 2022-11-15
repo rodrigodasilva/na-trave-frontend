@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { toast } from "react-toastify";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import baseApi from "@/services/baseApi";
 
@@ -14,28 +13,19 @@ interface Hunch {
 }
 
 export function useCreateHunch() {
-  const [status, setStatus] = useState("idle");
+  const queryClient = useQueryClient();
 
-  const handleCreateHunch = async (hunch: Hunch) => {
-    try {
-      setStatus("loading");
-
-      const response = await baseApi.post("/hunch", hunch);
-      return response.data as Hunch[];
-    } catch (e: any) {
-      setStatus("error");
-
-      const error = e.response?.data?.message || "Erro ao criar o palpite";
-      toast.error(error);
-      return null;
-    } finally {
-      setStatus("idle");
+  const addHunchMutation = useMutation(
+    (hunch: Hunch) => baseApi.post("/hunch", hunch),
+    {
+      onSettled: () => {
+        queryClient.invalidateQueries(["all-hunches"]);
+        queryClient.invalidateQueries(["seller-hunches"]);
+      },
     }
-  };
+  );
 
   return {
-    isLoading: status === "loading",
-    isError: status === "error",
-    handleCreateHunch,
+    addHunchMutation,
   };
 }
