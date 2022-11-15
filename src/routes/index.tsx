@@ -17,9 +17,9 @@ export default function AppRoutes() {
       <DefaultLayout header={<AppBar />}>
         <Suspense fallback={<Spinner className="mx-auto" />}>
           <Routes>
-            <Route path="/login" element={<AuthGuard element={<Login />} />} />
             <Route path="/" element={<Home />} />
             <Route path="/:date" element={<Home />} />
+            <Route path="/login" element={<AuthGuard element={<Login />} />} />
             <Route path="/match/:id" element={<Match />} />
           </Routes>
         </Suspense>
