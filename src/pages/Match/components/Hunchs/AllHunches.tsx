@@ -32,6 +32,7 @@ const AllHunches: React.FC<AllHunchesProps> = ({ matchId }) => {
           <tr>
             <th className="text-left">Nome</th>
             <th className="text-left">Placar</th>
+            <th className="text-left">Ganhou</th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +44,7 @@ const AllHunches: React.FC<AllHunchesProps> = ({ matchId }) => {
                     {hunch.match.homeTeam.abbr} {hunch.homeTeamScore} x{" "}
                     {hunch.awayTeamScore} {hunch.match.awayTeam.abbr}
                   </td>
+                  <td>{hunch.won ? "Sim" : "Não"}</td>
                 </tr>
               ))
             : null}

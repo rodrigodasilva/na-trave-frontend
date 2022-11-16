@@ -8,10 +8,7 @@ export const Card = styled.div`
   justify-content: center;
   border-radius: var(--rounded-md);
   padding: 24px 24px 16px;
-
-  &.card--outline {
-    border: 0.5px solid var(--gray-400);
-  }
+  border: 0.5px solid var(--gray-400);
 `;
 
 export const Header = styled.header`

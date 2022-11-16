@@ -3,10 +3,11 @@ import { Link, useParams } from "react-router-dom";
 import { ReactComponent as ArrowLeft } from "@/assets/icons/arrow_left.svg";
 import { ReactComponent as IconPlus } from "@/assets/icons/plus.svg";
 import Button from "@/components/Button";
-import * as MatchCard from "@/components/MatchCard";
+import { HunchForm } from "@/components/HunchForm";
 import { MessageInfo } from "@/components/MessageInfo";
 import Spinner from "@/components/Spinner";
 import * as Tabs from "@/components/Tabs";
+import Typography from "@/components/Typography";
 import { useAuthentication } from "@/hooks/useAuthentication";
 import { useMatch } from "@/hooks/useMatch";
 import { formatDate } from "@/utils/dateUtils";
@@ -33,6 +34,7 @@ const Match: React.FC = () => {
 
   const isSellerUser = session?.user?.role === "seller";
   const hasLoggedUser = !!session?.user;
+  const isAdminUser = session?.user.role === "admin";
 
   return (
     <>
@@ -52,12 +54,17 @@ const Match: React.FC = () => {
         ) : null}
       </S.Header>
 
-      <MatchCard.Card
-        match={match}
-        variant="clean"
-        className="mb-40"
-        dateFormat="DD[ de ]MMMM [ às ] HH:mm[h]"
-      />
+      <S.FormWrapper>
+        <S.FormHeader>
+          <Typography size="md" color="gray-500" weight="bold">
+            {match.stage}
+          </Typography>
+          <Typography size="md" color="gray-500" weight="normal" as="span">
+            {formatDate(match.datetime, "HH:mm[h]")}
+          </Typography>
+        </S.FormHeader>
+        <HunchForm match={match} allowEditing={isAdminUser} />
+      </S.FormWrapper>
 
       {hasLoggedUser ? (
         <Tabs.Root defaultValue="all" orientation="horizontal">

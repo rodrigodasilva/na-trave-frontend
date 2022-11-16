@@ -6,6 +6,7 @@ import * as z from "zod";
 import Button from "@/components/Button";
 import * as Dialog from "@/components/Dialog";
 import {
+  HunchFormBody,
   HunchFormIcon,
   HunchFormWrapper,
   HunchInput,
@@ -127,19 +128,21 @@ const ModalHunchUpdate: React.FC<ModalHunchUpdateProps> = ({
           </Typography>
           <form id="form-update-hunch" onSubmit={onSubmit}>
             <HunchFormWrapper className="mb-18">
-              <TeamCard team={hunch.match.homeTeam} type="home" />
-              <HunchInput
-                required
-                defaultValue={hunch.homeTeamScore ?? ""}
-                {...register("homeTeamScore")}
-              />
-              <HunchFormIcon />
-              <HunchInput
-                required
-                defaultValue={hunch.awayTeamScore ?? ""}
-                {...register("awayTeamScore")}
-              />
-              <TeamCard team={hunch.match.awayTeam} type="away" />
+              <HunchFormBody>
+                <TeamCard team={hunch.match.homeTeam} type="home" />
+                <HunchInput
+                  required
+                  defaultValue={hunch.homeTeamScore ?? ""}
+                  {...register("homeTeamScore")}
+                />
+                <HunchFormIcon />
+                <HunchInput
+                  required
+                  defaultValue={hunch.awayTeamScore ?? ""}
+                  {...register("awayTeamScore")}
+                />
+                <TeamCard team={hunch.match.awayTeam} type="away" />
+              </HunchFormBody>
             </HunchFormWrapper>
 
             <Input

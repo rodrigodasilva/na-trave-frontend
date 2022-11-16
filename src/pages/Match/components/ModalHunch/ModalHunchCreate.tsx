@@ -6,6 +6,7 @@ import * as z from "zod";
 import Button from "@/components/Button";
 import * as Dialog from "@/components/Dialog";
 import {
+  HunchFormBody,
   HunchFormIcon,
   HunchFormWrapper,
   HunchInput,
@@ -121,19 +122,13 @@ const ModalHunchCreate: React.FC<ModalHunchCreateProps> = ({
           </Typography>
           <form id="form-create-hunch" onSubmit={onSubmit}>
             <HunchFormWrapper className="mb-18">
-              <TeamCard team={match.homeTeam} type="home" />
-              <HunchInput
-                required
-                defaultValue={match.homeTeamScore ?? ""}
-                {...register("homeTeamScore")}
-              />
-              <HunchFormIcon />
-              <HunchInput
-                required
-                defaultValue={match.awayTeamScore ?? ""}
-                {...register("awayTeamScore")}
-              />
-              <TeamCard team={match.awayTeam} type="away" />
+              <HunchFormBody>
+                <TeamCard team={match.homeTeam} type="home" />
+                <HunchInput required {...register("homeTeamScore")} />
+                <HunchFormIcon />
+                <HunchInput required {...register("awayTeamScore")} />
+                <TeamCard team={match.awayTeam} type="away" />
+              </HunchFormBody>
             </HunchFormWrapper>
 
             <Controller

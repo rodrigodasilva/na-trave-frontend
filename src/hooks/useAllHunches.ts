@@ -29,6 +29,7 @@ interface Hunch {
   homeTeamScore: number;
   awayTeamScore: number;
   contactName: string;
+  won: boolean;
   createdAt: string;
   match: Match;
 }

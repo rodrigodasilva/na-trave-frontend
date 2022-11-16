@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import * as MatchCard from "@/components/MatchCard";
+import * as Card from "@/components/Card";
+import { HunchForm } from "@/components/HunchForm";
 import { MessageInfo } from "@/components/MessageInfo";
 import Typography from "@/components/Typography";
 import { useMatches } from "@/hooks/useMatches";
@@ -33,15 +34,31 @@ const Home: React.FC = () => {
         {data && data?.length > 0 ? (
           data.map(match => (
             <li key={match.id}>
-              <MatchCard.Card match={match}>
-                <MatchCard.Footer>
+              <Card.Card>
+                <Card.Header>
+                  <Typography size="md" color="gray-500" weight="bold">
+                    {match.stage}
+                  </Typography>
+                  <Typography
+                    size="md"
+                    color="gray-500"
+                    weight="normal"
+                    as="span"
+                  >
+                    {formatDate(match.datetime, "HH:mm[h]")}
+                  </Typography>
+                </Card.Header>
+
+                <HunchForm match={match} className="mb-18" />
+
+                <Card.Footer>
                   <Link to={`/match/${match.id}`}>
                     <Typography size="sm" color="primary" weight="normal">
                       Ver detalhes
                     </Typography>
                   </Link>
-                </MatchCard.Footer>
-              </MatchCard.Card>
+                </Card.Footer>
+              </Card.Card>
             </li>
           ))
         ) : (
