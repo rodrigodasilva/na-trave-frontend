@@ -13,6 +13,7 @@ import { useMatch } from "@/hooks/useMatch";
 import { formatDate } from "@/utils/dateUtils";
 
 import AllHunches from "./components/Hunchs/AllHunches";
+import HunchWinners from "./components/Hunchs/HunchWinners";
 import PublicHunches from "./components/Hunchs/PublicHunches";
 import SellerHunches from "./components/Hunchs/SellerHunches";
 import ModalHunchCreate from "./components/ModalHunch/ModalHunchCreate";
@@ -35,6 +36,9 @@ const Match: React.FC = () => {
   const isSellerUser = session?.user?.role === "seller";
   const hasLoggedUser = !!session?.user;
   const isAdminUser = session?.user.role === "admin";
+
+  const matchEnded =
+    match.homeTeamScore !== null && match.awayTeamScore !== null;
 
   return (
     <>
@@ -65,6 +69,11 @@ const Match: React.FC = () => {
         </S.FormHeader>
         <HunchForm match={match} allowEditing={isAdminUser} />
       </S.FormWrapper>
+      {matchEnded ? <HunchWinners matchId={matchId} className="mb-16" /> : null}
+
+      <Typography size="lg" weight="bold" className="mb-16">
+        Palpites
+      </Typography>
 
       {hasLoggedUser ? (
         <Tabs.Root defaultValue="all" orientation="horizontal">

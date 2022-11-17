@@ -23,7 +23,7 @@ export const TableWrapper = styled.table`
 
   td,
   th {
-    font-size: 14px;
+    font-size: var(--text-sm);
     color: var(--gray-600);
     padding: 8px 8px;
   }
@@ -36,4 +36,14 @@ export const TableWrapper = styled.table`
   tbody tr:nth-child(2n) {
     background: var(--slate-100);
   }
+`;
+
+export const TableMessageWrapper = styled.td`
+  height: 42px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: var(--text-sm);
+  line-height: 16px;
+  color: var(--gray-400) !important;
+  text-align: center;
 `;

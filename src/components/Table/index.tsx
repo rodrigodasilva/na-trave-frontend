@@ -12,4 +12,12 @@ const Table: React.FC<TableProps> = ({ children, ...props }) => {
   );
 };
 
+interface TableMessageProps {
+  children: React.ReactNode;
+}
+
+export const TableMessage: React.FC<TableMessageProps> = ({ children }) => (
+  <S.TableMessageWrapper colSpan={100}>{children}</S.TableMessageWrapper>
+);
+
 export default Table;

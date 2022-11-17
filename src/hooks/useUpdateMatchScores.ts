@@ -18,6 +18,7 @@ export function useUpdateMatchScores() {
         queryClient.invalidateQueries(["match"]);
         queryClient.invalidateQueries(["all-hunches"]);
         queryClient.invalidateQueries(["seller-hunches"]);
+        queryClient.invalidateQueries(["winners-hunches"]);
       },
     }
   );
