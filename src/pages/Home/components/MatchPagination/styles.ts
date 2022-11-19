@@ -11,10 +11,3 @@ export const MatchPagination = styled.nav`
     color: var(--primary);
   }
 `;
-
-export const MatchPaginationLoadingWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  background: #f1f5f973;
-  border-radius: var(--rounded-md);
-`;

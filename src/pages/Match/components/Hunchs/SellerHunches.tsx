@@ -3,7 +3,7 @@ import { useState } from "react";
 import { ReactComponent as IconPencil } from "@/assets/icons/pencil.svg";
 import { ReactComponent as IconTrash } from "@/assets/icons/trash.svg";
 import Button from "@/components/Button";
-import Input from "@/components/Input";
+// import Input from "@/components/Input";
 import { MessageInfo } from "@/components/MessageInfo";
 import Spinner from "@/components/Spinner";
 import Table from "@/components/Table";
@@ -76,12 +76,12 @@ const SellerHunches: React.FC<SellerHunchesProps> = ({ matchId, sellerId }) => {
 
   return (
     <S.Wrapper>
-      <Input
+      {/* <Input
         label="Buscar por:"
         placeholder="Ex: Maria"
         className="mb-16"
         maxWidth="300px"
-      />
+      /> */}
       <Table>
         <thead>
           <tr>

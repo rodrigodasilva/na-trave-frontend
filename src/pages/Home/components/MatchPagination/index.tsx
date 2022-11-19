@@ -1,7 +1,6 @@
 import { ReactComponent as IconCaretLeft } from "@/assets/icons/caret_left.svg";
 import { ReactComponent as IconCaretRight } from "@/assets/icons/caret_right.svg";
 import Button from "@/components/Button";
-import Spinner from "@/components/Spinner";
 import Typography from "@/components/Typography";
 import { formatDate, getNextDate, getPreviousDate } from "@/utils/dateUtils";
 
@@ -34,18 +33,23 @@ export const MatchPagination: React.FC<MatchPaginationProps> = ({
 
   return (
     <S.MatchPagination>
-      {isLoading ? (
-        <S.MatchPaginationLoadingWrapper>
-          <Spinner className="mx-auto" />
-        </S.MatchPaginationLoadingWrapper>
-      ) : null}
-      <Button variant="text" color="neutral" onClick={handlePreviousDate}>
+      <Button
+        variant="text"
+        color="neutral"
+        disabled={isLoading}
+        onClick={handlePreviousDate}
+      >
         <IconCaretLeft width={24} />
       </Button>
       <Typography size="md" color="gray-700" weight="bold">
         {formattedDateTitle}
       </Typography>
-      <Button variant="text" color="neutral" onClick={handleNextDate}>
+      <Button
+        variant="text"
+        color="neutral"
+        disabled={isLoading}
+        onClick={handleNextDate}
+      >
         <IconCaretRight width={24} />
       </Button>
     </S.MatchPagination>

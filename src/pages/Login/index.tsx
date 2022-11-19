@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ReactComponent as ArrowLeft } from "@/assets/icons/arrow_left.svg";
 import Button from "@/components/Button";
 import Input from "@/components/Input";
+import Spinner from "@/components/Spinner";
 import Typography from "@/components/Typography";
 import { useAuthentication } from "@/hooks/useAuthentication";
 import { useCreateSession } from "@/hooks/useCreateSession";
@@ -57,7 +58,12 @@ const Login: React.FC = () => {
           <Button variant="text" color="neutral" type="button">
             Voltar
           </Button>
-          <Button disabled={isLoading}>Acessar</Button>
+          <Button
+            isLoading={isLoading}
+            loadingIndicator={<Spinner color="gray-100" size="sm" />}
+          >
+            Acessar
+          </Button>
         </S.LoginFormActions>
       </S.LoginForm>
     </>

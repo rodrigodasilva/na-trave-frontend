@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import * as Card from "@/components/Card";
 import { HunchForm } from "@/components/HunchForm";
 import { MessageInfo } from "@/components/MessageInfo";
+import Spinner from "@/components/Spinner";
 import Typography from "@/components/Typography";
 import { useMatches } from "@/hooks/useMatches";
 import { formatDate, getInitialMatchesDate } from "@/utils/dateUtils";
@@ -31,43 +32,47 @@ const Home: React.FC = () => {
         onDateChange={handleDateChange}
       />
       <S.MatchList>
-        {data && data?.length > 0 ? (
-          data.map(match => (
-            <li key={match.id}>
-              <Card.Card>
-                <Card.Header>
-                  <Typography size="md" color="gray-500" weight="bold">
-                    {match.stage}
-                  </Typography>
-                  <Typography
-                    size="md"
-                    color="gray-500"
-                    weight="normal"
-                    as="span"
-                  >
-                    {formatDate(match.datetime, "HH:mm[h]")}
-                  </Typography>
-                </Card.Header>
+        {isLoading && <Spinner className="mx-auto" />}
 
-                <HunchForm match={match} className="mb-18" />
-
-                <Card.Footer>
-                  <Link to={`/match/${match.id}`}>
-                    <Typography size="sm" color="primary" weight="normal">
-                      Ver detalhes
+        {!isLoading && !!data && data?.length > 0
+          ? data.map(match => (
+              <li key={match.id}>
+                <Card.Card>
+                  <Card.Header>
+                    <Typography size="md" color="gray-500" weight="bold">
+                      {match.stage}
                     </Typography>
-                  </Link>
-                </Card.Footer>
-              </Card.Card>
-            </li>
-          ))
-        ) : (
+                    <Typography
+                      size="md"
+                      color="gray-500"
+                      weight="normal"
+                      as="span"
+                    >
+                      {formatDate(match.datetime, "HH:mm[h]")}
+                    </Typography>
+                  </Card.Header>
+
+                  <HunchForm match={match} className="mb-18" />
+
+                  <Card.Footer>
+                    <Link to={`/match/${match.id}`}>
+                      <Typography size="sm" color="primary" weight="normal">
+                        Ver detalhes
+                      </Typography>
+                    </Link>
+                  </Card.Footer>
+                </Card.Card>
+              </li>
+            ))
+          : null}
+
+        {!isLoading && data && data?.length === 0 ? (
           <MessageInfo>
             {isError
               ? "Houve um erro ao carregar as partidas"
               : "Nenhuma partida nesse dia"}
           </MessageInfo>
-        )}
+        ) : null}
       </S.MatchList>
     </>
   );

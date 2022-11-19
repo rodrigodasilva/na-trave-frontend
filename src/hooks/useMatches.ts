@@ -31,7 +31,7 @@ async function fetchMatches(date: string) {
 
 export function useMatches(date: string) {
   return useQuery(["matches", date], () => fetchMatches(date), {
-    keepPreviousData: true,
+    // keepPreviousData: true,
     staleTime: 5000,
   });
 }

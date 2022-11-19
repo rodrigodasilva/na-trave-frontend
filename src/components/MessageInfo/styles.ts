@@ -7,4 +7,5 @@ export const MatchMessageInfo = styled.p`
   line-height: 16px;
   color: var(--gray-500);
   text-align: center;
+  padding: 32px;
 `;

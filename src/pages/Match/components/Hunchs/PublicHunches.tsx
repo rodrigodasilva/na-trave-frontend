@@ -1,4 +1,4 @@
-import Input from "@/components/Input";
+// import Input from "@/components/Input";
 import { MessageInfo } from "@/components/MessageInfo";
 import Spinner from "@/components/Spinner";
 import Table from "@/components/Table";
@@ -21,12 +21,12 @@ const PublicHunches: React.FC<PublicHunchesProps> = ({ matchId }) => {
 
   return (
     <S.Wrapper>
-      <Input
+      {/* <Input
         label="Buscar por:"
         placeholder="Ex: Maria"
         className="mb-16"
         maxWidth="300px"
-      />
+      /> */}
       <Table>
         <thead>
           <tr>

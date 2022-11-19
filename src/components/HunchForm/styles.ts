@@ -38,6 +38,7 @@ export const HunchInput = styled.input`
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  margin-bottom: auto;
   text-align: center;
   font-size: var(--text-2xl);
   border-radius: var(--rounded-md);
