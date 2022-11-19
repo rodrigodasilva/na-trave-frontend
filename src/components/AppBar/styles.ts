@@ -22,7 +22,7 @@ export const AppBarContent = styled.div`
   align-items: center;
   margin-bottom: auto;
 
-  img {
+  .logo {
     width: 96px;
     height: 27px;
   }

@@ -41,7 +41,7 @@ export const MatchPagination: React.FC<MatchPaginationProps> = ({
       >
         <IconCaretLeft width={24} />
       </Button>
-      <Typography size="md" color="gray-700" weight="bold">
+      <Typography size="md" color="gray-700" weight="bold" align="center">
         {formattedDateTitle}
       </Typography>
       <Button

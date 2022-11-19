@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MatchList = styled.ul`
   padding: 0;
-  margin-top: 52px;
+  margin-top: 32px;
 
   > li {
     list-style: none;

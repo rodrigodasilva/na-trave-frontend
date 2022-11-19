@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
-import logo from "@/assets/logo.svg";
+import { ReactComponent as IconUserCircle } from "@/assets/icons/user_circle.svg";
+import { ReactComponent as Logo } from "@/assets/logo.svg";
 import { useAuthentication } from "@/hooks/useAuthentication";
 
 import Typography from "../Typography";
@@ -12,18 +13,24 @@ const AppBar: React.FC = () => {
   return (
     <S.AppBarWrapper>
       <S.AppBarContent>
-        <img src={logo} alt="Logo do site" />
+        <Logo className="logo" />
 
         {session ? (
-          <Typography
-            size="sm"
-            color="white"
-            role="button"
-            className="cursor-pointer"
-            onClick={deleteSession}
-          >
-            Sair
-          </Typography>
+          <S.AppBarContentRight>
+            <Typography size="sm" color="white" weight="normal">
+              {session?.user?.name}
+            </Typography>
+            <IconUserCircle />
+            <Typography
+              size="sm"
+              color="white"
+              role="button"
+              className="cursor-pointer"
+              onClick={deleteSession}
+            >
+              Sair
+            </Typography>
+          </S.AppBarContentRight>
         ) : (
           <Link to="/login">
             <Typography size="sm" color="white">
