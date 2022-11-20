@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import * as Card from "@/components/Card";
@@ -15,7 +16,9 @@ const Home: React.FC = () => {
   const { date } = useParams();
   const navigate = useNavigate();
 
-  const currentDate = date || getInitialMatchesDate().toISOString();
+  const currentDate = useMemo(() => {
+    return date || getInitialMatchesDate().toISOString();
+  }, [date]);
 
   const { data, isLoading, isError } = useMatches(currentDate);
 
