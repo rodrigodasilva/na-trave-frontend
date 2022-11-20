@@ -52,6 +52,7 @@ export const HunchInput = styled.input`
   &:disabled {
     color: var(--gray-500);
     border: none;
+    background-color: var(--white);
   }
 
   &::-webkit-outer-spin-button,

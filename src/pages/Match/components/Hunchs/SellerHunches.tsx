@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { ReactComponent as IconPencil } from "@/assets/icons/pencil.svg";
-import { ReactComponent as IconTrash } from "@/assets/icons/trash.svg";
+// import { ReactComponent as IconTrash } from "@/assets/icons/trash.svg";
 import Button from "@/components/Button";
 // import Input from "@/components/Input";
 import { MessageInfo } from "@/components/MessageInfo";
@@ -109,9 +109,9 @@ const SellerHunches: React.FC<SellerHunchesProps> = ({ matchId, sellerId }) => {
                     >
                       Editar
                     </Button>
-                    <Button variant="ghost" size="sm" startIcon={<IconTrash />}>
+                    {/* <Button variant="ghost" size="sm" startIcon={<IconTrash />}>
                       Deletar
-                    </Button>
+                    </Button> */}
                   </S.TableTdActions>
                 </tr>
               ))
