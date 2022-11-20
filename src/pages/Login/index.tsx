@@ -55,9 +55,6 @@ const Login: React.FC = () => {
         />
 
         <S.LoginFormActions>
-          <Button variant="text" color="neutral" type="button">
-            Voltar
-          </Button>
           <Button
             isLoading={isLoading}
             loadingIndicator={<Spinner color="gray-100" size="sm" />}
