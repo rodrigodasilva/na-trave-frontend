@@ -34,7 +34,6 @@ const Match: React.FC = () => {
   const formattedMatchDatetime = formatDate(match?.datetime, "yy-MM-DD");
 
   const isSellerUser = session?.user?.role === "seller";
-  const hasLoggedUser = !!session?.user;
   const isAdminUser = session?.user.role === "admin";
 
   const matchEnded =
@@ -69,15 +68,16 @@ const Match: React.FC = () => {
         </S.FormHeader>
         <HunchForm match={match} allowEditing={isAdminUser} />
       </S.FormWrapper>
-      {matchEnded ? <HunchWinners matchId={matchId} className="mb-16" /> : null}
+
+      {matchEnded ? <HunchWinners matchId={matchId} className="mb-32" /> : null}
 
       <Typography size="lg" weight="bold" className="mb-16">
         Palpites
       </Typography>
 
-      {hasLoggedUser ? (
+      {isSellerUser ? (
         <Tabs.Root defaultValue="all" orientation="horizontal">
-          <Tabs.List aria-label="tabs">
+          <Tabs.List aria-label="tabs" className="mb-16">
             <Tabs.Trigger value="all">Todos</Tabs.Trigger>
             <Tabs.Trigger value="by-seller">Feitos por mim</Tabs.Trigger>
           </Tabs.List>

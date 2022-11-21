@@ -17,7 +17,9 @@ interface TableMessageProps {
 }
 
 export const TableMessage: React.FC<TableMessageProps> = ({ children }) => (
-  <S.TableMessageWrapper colSpan={100}>{children}</S.TableMessageWrapper>
+  <S.TableMessageWrapper>
+    <td colSpan={100}>{children}</td>
+  </S.TableMessageWrapper>
 );
 
 export default Table;

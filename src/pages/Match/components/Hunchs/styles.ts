@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 12px 0;
+  padding: 0;
 `;
 
 export const TableTdActions = styled.td`

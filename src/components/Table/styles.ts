@@ -38,12 +38,14 @@ export const TableWrapper = styled.table`
   }
 `;
 
-export const TableMessageWrapper = styled.td`
-  height: 42px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: var(--text-sm);
-  line-height: 16px;
-  color: var(--gray-400) !important;
-  text-align: center;
+export const TableMessageWrapper = styled.tr`
+  td {
+    height: 42px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: var(--text-sm);
+    line-height: 16px;
+    color: var(--gray-400) !important;
+    text-align: center;
+  }
 `;
