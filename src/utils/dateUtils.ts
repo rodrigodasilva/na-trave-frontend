@@ -17,7 +17,8 @@ export function getPreviousDate(date: string | Date) {
 }
 
 export function getInitialMatchesDate() {
-  const currentDate = new Date();
+  const currentDate = moment(new Date()).format("yy-MM-DD");
+
   const worldCupStartDate = new Date("2022-11-20 16:00");
 
   if (moment(currentDate).isBefore(worldCupStartDate)) {

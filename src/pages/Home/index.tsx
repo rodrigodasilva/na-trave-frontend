@@ -17,7 +17,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
 
   const currentDate = useMemo(() => {
-    return date || getInitialMatchesDate().toISOString();
+    return date || getInitialMatchesDate().toLocaleString();
   }, [date]);
 
   const { data, isLoading, isError } = useMatches(currentDate);
