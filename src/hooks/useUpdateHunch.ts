@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { toast } from "react-toastify";
 
 import baseApi from "@/services/baseApi";
 
@@ -20,6 +21,11 @@ export function useUpdateHunch() {
       onSettled: () => {
         queryClient.invalidateQueries(["all-hunches"]);
         queryClient.invalidateQueries(["seller-hunches"]);
+      },
+      onError: (err: any) => {
+        const message =
+          err?.response?.data?.message || "Houve um erro ao editar o palpite";
+        toast.error(message);
       },
     }
   );
