@@ -28,6 +28,7 @@ const HunchWinners: React.FC<HunchWinnersProps> = ({ matchId, className }) => {
           <tr>
             <th className="text-left">Nome</th>
             <th className="text-left">Placar</th>
+            <th className="text-left">Pagamento</th>
           </tr>
         </thead>
         <tbody>
@@ -38,6 +39,9 @@ const HunchWinners: React.FC<HunchWinnersProps> = ({ matchId, className }) => {
                 <td>
                   {hunch.match.homeTeam.abbr} {hunch.homeTeamScore} x{" "}
                   {hunch.awayTeamScore} {hunch.match.awayTeam.abbr}
+                </td>
+                <td>
+                  {hunch.payment === "finished" ? "Realizado" : "Pendente"}
                 </td>
               </tr>
             ))

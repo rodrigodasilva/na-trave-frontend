@@ -6,7 +6,6 @@ export const AppBarWrapper = styled.header`
   color: var(--primary-contrast);
   display: flex;
   flex-direction: column;
-  height: 88px;
   justify-content: center;
   align-items: flex-start;
   width: 100%;
