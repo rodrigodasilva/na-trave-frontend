@@ -96,8 +96,8 @@ const SellerHunches: React.FC<SellerHunchesProps> = ({ matchId, sellerId }) => {
                 <tr key={hunch.id}>
                   <td>{hunch.contactName}</td>
                   <td>
-                    {hunch.match.homeTeam.abbr} {hunch.homeTeamScore} x{" "}
-                    {hunch.awayTeamScore} {hunch.match.awayTeam.abbr}
+                    {hunch.match?.homeTeam?.abbr} {hunch.homeTeamScore} x{" "}
+                    {hunch.awayTeamScore} {hunch.match?.awayTeam?.abbr}
                   </td>
                   <S.TableTdActions>
                     <Button

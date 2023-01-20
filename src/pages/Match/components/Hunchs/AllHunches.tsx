@@ -41,8 +41,8 @@ const AllHunches: React.FC<AllHunchesProps> = ({ matchId }) => {
                 <tr key={hunch.id}>
                   <td>{hunch.contactName}</td>
                   <td>
-                    {hunch.match.homeTeam.abbr} {hunch.homeTeamScore} x{" "}
-                    {hunch.awayTeamScore} {hunch.match.awayTeam.abbr}
+                    {hunch.match?.homeTeam?.abbr} {hunch.homeTeamScore} x{" "}
+                    {hunch.awayTeamScore} {hunch.match?.awayTeam?.abbr}
                   </td>
                   <td>{hunch.won ? "Sim" : "Não"}</td>
                 </tr>
