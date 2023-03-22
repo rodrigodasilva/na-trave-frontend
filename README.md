@@ -1,5 +1,7 @@
 # NaTrave Frontend
 
+Figma: https://www.figma.com/file/S0eFz77VciRut4UTSI8VgF/NaTrave?node-id=0%3A1&t=aG25PyDY0cedEPIQ-1
+
 ## What's inside?
 
 - [ReactJS](https://reactjs.org)
@@ -15,13 +17,13 @@
 1. Clone the project.
 
    ```bash
-   git clone git@github.com:rodrigodasilva/blip.git
+   git clone git@github.com:rodrigodasilva/na-trave-frontend.git
    ```
 
 2. Access the project directory.
 
    ```bash
-   cd blip
+   cd na-trave-frontend
    ```   
 
 3. Install dependencies.
@@ -40,33 +42,3 @@
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-## Other commands
-
-### Lint commands
-
-```bash
-npm run lint
-```
-
-### Build commands
-
-```bash
-npm run build
-```
-
-### Run the app in production mode at http://localhost:3000.
-
-```bash
-npm run serve
-```
-
-### Test commands
-
-- Run unit tests and watch
-  ```bash
-  npm run test:unit
-  ```
-- Run unit tests with coverage
-  ```bash
-  npm run test:unit:coverage
-  ```
